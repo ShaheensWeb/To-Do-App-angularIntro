@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ToDo"> 
+	<head>
+		<meta charset="UTF-8">
+		<title>toDo Intro To Angular - Shaheen</title>
+		<style>
+			.done {
+				text-decoration: : line-through;
+				color: #ccc;
+			}
+			.pageWrap {
+				width: 800px;
+				margin: 0 auto;
+			}
+		</style>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="pageWrap" ng-controller="todoController">
+			<form name="frm" ng-submit="addToDo()">
+				<input class="form-control" style="border: 1px solid red;" type="text" name="newToDo" ng-model="newToDo" required/>
+				<button class="btn btn-default" ng-disabled="frm.$invalid" style="width: 134px;">Add</button>
+			</form>
+			<button class="btn btn-default" ng-click="clearCompleted()">Clear Completed</button>
+			<ul class="list">
+				<li ng-repeat="todo in todos">
+					<input type="checkbox" ng-model="todo.done"/>
+					<span ng-class="{'done': todo.done}">{{todo.title}}</span>
+				</li>
+			</ul>
+		</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="app.js"></script>
+	</body>
+</html>
